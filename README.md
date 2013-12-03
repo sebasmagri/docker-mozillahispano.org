@@ -1,44 +1,50 @@
-# docker-wordpress-nginx
+# docker-mozillahispano.org
 
-A Dockerfile that installs the latest wordpress, nginx, php-apc and php-fpm.
+Dockerfile para instalar el entorno de desarrollo del sitio de Mozilla Hispano en un contenedor LXC.
 
-NB: A big thanks to [jbfink](https://github.com/jbfink/docker-wordpress) who did most of the hard work on the wordpress parts!
+## Software incluido
 
-You can check out his [Apache version here](https://github.com/jbfink/docker-wordpress).
+* Wordpress
+* Nginx
+* PHP APC
+* PHP FPM
 
-## Installation
+## Thanks/Agradecimientos
+
+A big thanks to [eugeneware](https://github.com/eugeneware/docker-wordpress-nginx) and [jbfink](https://github.com/jbfink/docker-wordpress) who did most of the hard work on the wordpress parts!
+
+## Requerimientos
+
+* Un computador corriendo Linux
+* [Docker](http://www.docker.io/)
+
+## Instalación
 
 ```
-$ git clone https://github.com/eugeneware/docker-wordpress-nginx.git
-$ cd docker-wordpress-nginx
-$ sudo docker build -t="docker-wordpress-nginx" .
+$ git clone https://github.com/sebasmagri/docker-mozillahispano.org.git
+$ cd docker-mozillahispano.org
+$ sudo docker build -t="docker-mozillahispano.org" .
 ```
 
-## Usage
+## Uso
 
-To spawn a new instance of wordpress:
+Para ejecutar el sitio:
 
 ```bash
-$ sudo docker run -d docker-wordpress-nginx
+$ sudo docker run -d docker-mozillahispano.org
 ```
 
-You'll see an ID output like:
+Verás un ID del contenedor en la salida como este:
 ```
 d404cc2fa27b
 ```
 
-Use this ID to check the port it's on:
+Usa el ID para verificar en qué puerto está corriendo el sitio:
 ```bash
-$ sudo docker port d404cc2fa27b 80 # Make sure to change the ID to yours!
-```
-
-This command returns the container ID, which you can use to find the external port you can use to access Wordpress from your host machine:
-
-```
 $ docker port <container-id> 80
 ```
 
-You can the visit the following URL in a browser on your host machine to get started:
+Puedes visitar el sitio en un navegador usando localhost y el puerto que acabas de obtener:
 
 ```
 http://127.0.0.1:<port>
